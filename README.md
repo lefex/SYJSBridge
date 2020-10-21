@@ -48,7 +48,7 @@ sy.system.showModal({
 
 ## Use in iOS
 
-You need to download the project [SYJSBridge](https://github.com/lefex/[SYJSBridge](https://github.com/lefex/SYWebViewBridge)) to use in iOS。
+You need to download the project [SYWebViewBridge](https://github.com/lefex/SYWebViewBridge) to use in iOS。
 
 ## Questions
 
