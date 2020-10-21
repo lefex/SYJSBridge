@@ -1,6 +1,8 @@
 
 An iOS *modern bridge* for sending messages between Objective-C and JavaScript in WKWebView. Include FE and iOS.
 
+The project is in the beta phase and is being used in my own projects.
+
 ![logo](https://s1.ax1x.com/2020/10/10/06u4dP.md.png)
 
 ## Documentation
@@ -42,6 +44,11 @@ sy.system.showModal({
     }
 });
 ```
+[more docs](https://lefex.github.io/SYWebViewBridge/)
+
+## Use in iOS
+
+You need to download the project [SYJSBridge](https://github.com/lefex/[SYJSBridge](https://github.com/lefex/SYWebViewBridge)) to use in iOS。
 
 ## Questions
 
