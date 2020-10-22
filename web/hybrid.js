@@ -1,4 +1,4 @@
-import SYBridge from '../packages/sy-webview-bridge/src/index.js';
+import SYBridge from '../src/index';
 import NetworkPlugin from './networkPlugin';
 
 export default function initBridge() {
