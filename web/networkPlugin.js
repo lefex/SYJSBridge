@@ -4,7 +4,7 @@
  * @author suyan
 */
 
-import {SYPlugin} from '../packages/sy-webview-bridge/dist/index';
+import {SYPlugin} from '../src/plugins/plugin';
 
 export default class NetworkPlugin extends SYPlugin {
     request(options) {
