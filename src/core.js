@@ -5,7 +5,6 @@
 */
 
 /* global __SYDEV__*/
-import {SYEnvBridgeName} from './constant';
 export default class SYCore {
     constructor(context) {
         // save callback id and function
@@ -28,24 +27,19 @@ export default class SYCore {
         }
         else {
              // use postMessage to send message in iOS
-            this.callPostMessage(jumpRouter, params.bridgeName);
+            this.callPostMessage(jumpRouter);
         }
         // need to change callback id(due to not repeat)
         this.curId += 1;
     }
-    callPostMessage(router, bridgeName) {
+    callPostMessage(router) {
         if (!window.webkit || !window.webkit.messageHandlers) {
             if (__SYDEV__) {
                 console.warn('window.webkit.messageHandlers can not nil');
             }
             return;
         }
-        if (bridgeName === SYEnvBridgeName) {
-            window.webkit.messageHandlers.SYJSBridgeEnv.postMessage(router);
-        }
-        else {
-            window.webkit.messageHandlers.SYJSBridge.postMessage(router);
-        }
+        window.webkit.messageHandlers.SYJSBridge.postMessage(router);
     }
     callIframe(router) {
         let iframe = document.createElement('iframe');

@@ -99,7 +99,7 @@ export default class SYBridge {
         // debug plugin
         this.debug = new SYDebug(this.core, 'debug');
         // environment plugin
-        this.env = new SYEnv(this.core, 'env');
+        this.env = new SYEnv(this.core, 'webview');
         // lifecycle object to receive lifecycle message
         this.lifecycle = null;
         // private
