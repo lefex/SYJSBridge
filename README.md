@@ -5,6 +5,21 @@ The project is in the beta phase and is being used in my own projects.
 
 ![logo](https://s1.ax1x.com/2020/10/10/06u4dP.md.png)
 
+## How to run
+
+You should install node before run SYBridge.
+
+```shell
+# clone the project
+git clone git@github.com:lefex/SYJSBridge.git
+# cd to web catagory，the iOS page source
+cd web
+# run npm install to  install dependency
+npm install
+# run webserver
+npm run start
+```
+
 ## Documentation
 
 [Docs Detail](https://lefex.github.io/SYWebViewBridge/)
