@@ -27,6 +27,12 @@
         <div class="button" v-on:click="log">Log msg in app</div>
         <p class="des">Make sure have a debug alert</p>
         <div class="button" v-on:click="webAlert">Use Web Alert</div>
+        <div class="line"></div>
+        <!-- sync method -->
+        <h1 class="title">Send sync method</h1>
+        <p class="des">Make sure get a sync message</p>
+        <div class="button" v-on:click="sendMessageSync">Send sync message</div>
+        <test-result :status="syncMsgStatus"></test-result>
     </div>
 </template>
 
@@ -42,7 +48,8 @@ export default {
         return {
             setEnvStatus: '0',
             showModalStatus: '0',
-            networkStatus: '0'
+            networkStatus: '0',
+            syncMsgStatus: '0'
         };
     },
     methods: {
@@ -127,6 +134,15 @@ export default {
                     this.networkStatus = '2';
                 }
             }, 5000);
+        },
+        sendMessageSync() {
+            let ret = sy.system.isLoginSync();
+            if (ret) {
+                this.syncMsgStatus = '1';
+            }
+            else {
+                this.syncMsgStatus = '2';
+            }
         }
     }
 };

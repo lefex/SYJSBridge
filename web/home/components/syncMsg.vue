@@ -21,6 +21,10 @@
         <div class="button" v-on:click="alert">Send Debug Alert</div>
         <div class="button" v-on:click="log">Log msg in app</div>
         <div class="button" v-on:click="webAlert">Use Web Alert</div>
+        <!-- send msg sync -->
+        <h1 class="title"> send msg sync</h1>
+        <p class="des">send debug msg sync in webview</p>
+        <div class="button" v-on:click="isLoginSync">isLoginSync</div>
     </div>
 </template>
 
@@ -92,6 +96,16 @@ export default {
                     console.log('request complete');
                 }
             });
+        },
+        isLoginSync() {
+            let login = sy.system.isLoginSync();
+            if (login.isLogin) {
+                sy.debug.alert('已登录');
+            }
+            else {
+                sy.debug.alert('未登录');
+            }
+            
         }
     }
 };

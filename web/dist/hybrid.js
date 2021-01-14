@@ -17,7 +17,6 @@ import SYBridge from '../../packages/sy-webview-bridge/src/index.js';
     let that = this;
     sy.lifecycle = {
         onLoad() {
-            debugger
             that.lifecycles.push('onLoadd');
         },
         onShow() {

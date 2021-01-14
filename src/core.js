@@ -16,19 +16,36 @@ export default class SYCore {
     }
     // suyan://gzh.fe/debug/showAlert?param={key: value}&callback=js_callback
     sendMsg(router, options) {
+        this._sendMsg(router, options);
+    }
+    // sned message sync
+    sendMsgSync(router, options) {
+        return this._sendMsg(router, options, true);
+    }
+    _sendMsg(router, options, sync) {
         const params = this.generateParams(options);
         // all param neeed to be a json string
         const paramJson = JSON.stringify(params);
         // generate a router
         let jumpRouter = `${router}?params=${encodeURIComponent(paramJson)}`;
-        if (this.context.isAndroid) {
+        if (this.context.isAndroid || sync) {
              // use prompt to send message in Android
-            prompt(jumpRouter);
+            const retJson = prompt(jumpRouter);
+            if (retJson) {
+                try {
+                    const retObj = JSON.parse(retJson);
+                    if (retObj && +retObj.status === 0) {
+                        return retObj.data;
+                    }
+                    return null;
+                } catch (error) {
+                    return null;
+                }
+            }
+            return null;
         }
-        else {
-             // use postMessage to send message in iOS
-            this.callPostMessage(jumpRouter);
-        }
+        // use postMessage to send message in iOS
+        this.callPostMessage(jumpRouter);
         // need to change callback id(due to not repeat)
         this.curId += 1;
     }
@@ -51,6 +68,9 @@ export default class SYCore {
         window.location.href = router;
     }
     generateParams(options) {
+        if (!options) {
+            return {};
+        }
         // send NA params
         let params = {};
         let callbackId = this.curId;
